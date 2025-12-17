@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mi Cuenta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="micuenta">
+
+<div class="topbar">
+  <div class="container">
+    <ul class="topbar__list">
+      <li>Envío el mismo día</li>
+      <li>Gratis desde $50</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html"><img src="img/logo.png" class="logo" alt="Distribuidora"></a>
+
+    <button class="header__categories" id="btn-categorias">Categorías ▼</button>
+    <div class="dropdown" id="dropdown-categorias">
+      <a href="despensa.html">Despensa</a>
+      <a href="bebidas.html">Bebidas</a>
+      <a href="aseo.html">Aseo</a>
+      <a href="congelados.html">Congelados</a>
+      <a href="farmacia.html">Farmacia</a>
+      <a href="hogar.html">Hogar</a>
+      <a href="comida.html">Comidas</a>
+      <a href="tecnologia.html">Tecnología</a>
+    </div>
+
+    <form class="site-search">
+      <input id="buscador" type="search" placeholder="Buscar productos...">
+      <button type="submit">🔍</button>
+    </form>
+
+    <div class="header__actions">
+      <a id="btnLogin" class="header__login" href="micuenta.html">Mi cuenta</a>
+      <a class="header__cart" href="carrito.html">🛒 <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="products">
+  <div class="container">
+    <h3 class="section__title">Mi Cuenta</h3>
+    <p class="section__subtitle">Aquí verás tu info cuando conectemos el endpoint de perfil.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h4 class="card__title">Sesión</h4>
+        <p id="userEmail" class="card__desc"></p>
+        <div class="card__actions">
+          <a class="btn btn--ghost" href="login.html">Ir a Login</a>
+          <button id="btnLogout" class="btn btn--primary">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4 class="card__title">Pedidos / Facturas</h4>
+        <p class="card__desc">Tu API tiene GET /api/facturas. Podemos mostrarlo aquí si quieres.</p>
+        <div class="card__actions">
+          <a class="btn btn--primary" href="index.html">Seguir comprando</a>
+          <a class="btn btn--ghost" href="carrito.html">Ver carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module" src="JS/categorias.js"></script>
+<script type="module" src="JS/buscador.js"></script>
+<script type="module" src="JS/page-common.js"></script>
+<script type="module">
+  import { updateCartBadge } from "./JS/carrito.js";
+  updateCartBadge();
+
+  const email = localStorage.getItem("usuario_email");
+  document.getElementById("userEmail").textContent = email ? `Conectado como: ${email}` : "No has iniciado sesión.";
+
+  document.getElementById("btnLogout").addEventListener("click", () => {
+    localStorage.removeItem("usuario_email");
+    localStorage.removeItem("usuario_json");
+    alert("Sesión cerrada ✅");
+    window.location.href = "index.html";
+  });
+</script>
+
+</body>
+</html>

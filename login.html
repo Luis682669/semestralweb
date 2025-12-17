@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Iniciar sesión</h2>
+
+  <form id="loginForm">
+    <label>Usuario / Correo</label>
+    <input type="text" id="email" required placeholder="correo@ejemplo.com">
+
+    <label>Contraseña</label>
+    <input type="password" id="password" required placeholder="••••••••">
+
+    <button class="btn btn--primary" type="submit" style="width:100%">Ingresar</button>
+  </form>
+
+  <p class="login-note">¿Aún no tienes cuenta? (si luego haces register, lo agregamos)</p>
+</div>
+
+<script type="module" src="JS/login.js"></script>
+</body>
+</html>

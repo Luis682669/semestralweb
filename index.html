@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Distribuidora | Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body data-page="index">
+
+<div class="topbar">
+  <div class="container">
+    <ul class="topbar__list">
+      <li>Envío el mismo día</li>
+      <li>Gratis desde $50</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+
+    <a href="index.html" class="header__logo">
+      <img src="img/logo.png" alt="Distribuidora" class="logo">
+    </a>
+
+    <button class="header__categories" id="btn-categorias">Categorías ▼</button>
+    <div class="dropdown" id="dropdown-categorias">
+      <a href="despensa.html">Despensa</a>
+      <a href="bebidas.html">Bebidas</a>
+      <a href="aseo.html">Aseo</a>
+      <a href="congelados.html">Congelados</a>
+      <a href="farmacia.html">Farmacia</a>
+      <a href="hogar.html">Hogar</a>
+      <a href="comida.html">Comidas</a>
+      <a href="tecnologia.html">Tecnología</a>
+    </div>
+
+    <form class="site-search">
+      <input id="buscador" type="search" placeholder="Buscar productos...">
+      <button type="submit">🔍</button>
+    </form>
+
+    <div class="header__actions">
+      <a id="btnLogin" class="header__login" href="micuenta.html">Mi cuenta</a>
+      <a class="header__cart" href="carrito.html">🛒 <span class="cart-count">0</span></a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="carousel">
+      <div class="carousel__track">
+        <div class="carousel__item" style="background-image:url('img/Promos/belleza.jpg')">
+          <div class="carousel__content">
+            <h2>Black Week</h2>
+            <p>Hasta 40% off en belleza y hogar</p>
+            <a href="hogar.html" class="btn btn--primary">Ver más</a>
+          </div>
+        </div>
+
+        <div class="carousel__item" style="background-image:url('img/Promos/frutas.jpg')">
+          <div class="carousel__content">
+            <h2>Frescura del día</h2>
+            <p>Frutas y verduras seleccionadas</p>
+            <a href="despensa.html" class="btn btn--primary">Comprar</a>
+          </div>
+        </div>
+
+        <div class="carousel__item" style="background-image:url('img/Promos/Limpieza.jpg')">
+          <div class="carousel__content">
+            <h2>Hogar y limpieza</h2>
+            <p>Los esenciales con descuento</p>
+            <a href="aseo.html" class="btn btn--primary">Aprovechar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel__controls">
+        <button class="carousel__control prev" aria-label="Anterior">‹</button>
+        <button class="carousel__control next" aria-label="Siguiente">›</button>
+      </div>
+
+      <div class="carousel__nav dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <h3 class="section__title">Categorías</h3>
+
+    <div class="cat__grid">
+      <a href="despensa.html" class="cat"><img src="img/despensa.png" class="cat__icon"><span>Despensa</span></a>
+      <a href="bebidas.html" class="cat"><img src="img/bebidas.png" class="cat__icon"><span>Bebidas</span></a>
+      <a href="aseo.html" class="cat"><img src="img/aseo.png" class="cat__icon"><span>Aseo</span></a>
+      <a href="congelados.html" class="cat"><img src="img/congelados.png" class="cat__icon"><span>Congelados</span></a>
+      <a href="farmacia.html" class="cat"><img src="img/farmacia.png" class="cat__icon"><span>Farmacia</span></a>
+      <a href="hogar.html" class="cat"><img src="img/hogar.png" class="cat__icon"><span>Hogar</span></a>
+      <a href="comida.html" class="cat"><img src="img/comida.png" class="cat__icon"><span>Comidas</span></a>
+      <a href="tecnologia.html" class="cat"><img src="img/tecnologia.png" class="cat__icon"><span>Tecnología</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="container">
+    <h3 class="section__title">Todos los productos</h3>
+    <p class="section__subtitle">Cargar articulo en la api</p>
+
+    <div class="grid"></div>
+  </div>
+</section>
+
+</main>
+
+<script type="module" src="JS/categorias.js"></script>
+<script type="module" src="JS/carrusel.js"></script>
+<script type="module" src="JS/buscador.js"></script>
+<script type="module" src="JS/page-common.js"></script>
+
+</body>
+</html>

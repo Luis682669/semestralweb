@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tecnología</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/estilos.css">
+</head>
+<body data-category="tecnologia">
+
+<div class="topbar">
+  <div class="container">
+    <ul class="topbar__list">
+      <li>Envío el mismo día</li>
+      <li>Gratis desde $50</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html"><img src="img/logo.png" class="logo"></a>
+
+    <button class="header__categories" id="btn-categorias">Categorías ▼</button>
+    <div class="dropdown" id="dropdown-categorias">
+      <a href="despensa.html">Despensa</a>
+      <a href="bebidas.html">Bebidas</a>
+      <a href="aseo.html">Aseo</a>
+      <a href="congelados.html">Congelados</a>
+      <a href="farmacia.html">Farmacia</a>
+      <a href="hogar.html">Hogar</a>
+      <a href="comida.html">Comidas</a>
+      <a href="tecnologia.html">Tecnología</a>
+    </div>
+
+    <form class="site-search">
+      <input id="buscador" type="search" placeholder="Buscar productos...">
+      <button type="submit">🔍</button>
+    </form>
+
+    <div class="header__actions">
+      <a id="btnLogin" class="header__login" href="micuenta.html">Mi cuenta</a>
+      <a class="header__cart" href="carrito.html">🛒 <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="products">
+  <div class="container">
+    <h3 class="section__title">Tecnología</h3>
+    <div class="grid"></div>
+  </div>
+</section>
+
+<script type="module" src="JS/categorias.js"></script>
+<script type="module" src="JS/buscador.js"></script>
+<script type="module" src="JS/page-common.js"></script>
+<script type="module" src="JS/loader-categorias.js"></script>
+</body>
+</html>

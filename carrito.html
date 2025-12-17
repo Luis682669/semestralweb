@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Carrito | Distribuidora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="carrito">
+
+<div class="topbar">
+  <div class="container">
+    <ul class="topbar__list">
+      <li>Envío el mismo día</li>
+      <li>Gratis desde $50</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html"><img src="img/logo.png" class="logo" alt="Distribuidora"></a>
+
+    <button class="header__categories" id="btn-categorias">Categorías ▼</button>
+    <div class="dropdown" id="dropdown-categorias">
+      <a href="despensa.html">Despensa</a>
+      <a href="bebidas.html">Bebidas</a>
+      <a href="aseo.html">Aseo</a>
+      <a href="congelados.html">Congelados</a>
+      <a href="farmacia.html">Farmacia</a>
+      <a href="hogar.html">Hogar</a>
+      <a href="comida.html">Comidas</a>
+      <a href="tecnologia.html">Tecnología</a>
+    </div>
+
+    <form class="site-search">
+      <input id="buscador" type="search" placeholder="Buscar productos...">
+      <button type="submit">🔍</button>
+    </form>
+
+    <div class="header__actions">
+      <a id="btnLogin" class="header__login" href="micuenta.html">Mi cuenta</a>
+      <a class="header__cart" href="carrito.html">🛒 <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="cart-wrap">
+  <div class="container">
+    <h3 class="section__title">Carrito de compras</h3>
+    <p class="section__subtitle">Tus productos listos para comprar.</p>
+
+    <div id="cartList" class="cart-list"></div>
+
+    <div class="cart-summary">
+      <div>
+        <div style="font-weight:1000">Total</div>
+        <div id="cartTotal" style="font-size:1.35rem;font-weight:1000">$0.00</div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button id="btnClear" class="btn btn--ghost">Vaciar</button>
+        <button id="btnCheckout" class="btn btn--primary">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module" src="JS/categorias.js"></script>
+<script type="module" src="JS/buscador.js"></script>
+<script type="module" src="JS/page-common.js"></script>
+<script type="module">
+  import { getCart, changeQty, removeFromCart, clearCart, money, updateCartBadge } from "./JS/carrito.js";
+
+  function calcTotal(cart){
+    return cart.reduce((acc, it) => acc + (it.precio * it.qty), 0);
+  }
+
+  function render(){
+    const list = document.getElementById("cartList");
+    const totalEl = document.getElementById("cartTotal");
+    const cart = getCart();
+
+    list.innerHTML = "";
+    if(cart.length === 0){
+      const msg = document.createElement("div");
+      msg.className = "no-results";
+      msg.textContent = "Tu carrito está vacío.";
+      list.appendChild(msg);
+      totalEl.textContent = "$0.00";
+      updateCartBadge();
+      return;
+    }
+
+    cart.forEach(it => {
+      const row = document.createElement("div");
+      row.className = "cart-item";
+      row.innerHTML = `
+        <img src="${it.imagen}" alt="${it.nombre}">
+        <div>
+          <h4>${it.nombre}</h4>
+          <div class="meta">${money(it.precio)} c/u</div>
+        </div>
+        <div class="right">
+          <div class="qty">
+            <button class="dec">-</button>
+            <span>${it.qty}</span>
+            <button class="inc">+</button>
+          </div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+            <button class="btn btn--ghost rm">Eliminar</button>
+          </div>
+        </div>
+      `;
+
+      row.querySelector(".dec").addEventListener("click", () => { changeQty(it.id, -1); render(); });
+      row.querySelector(".inc").addEventListener("click", () => { changeQty(it.id, +1); render(); });
+      row.querySelector(".rm").addEventListener("click", () => { removeFromCart(it.id); render(); });
+
+      list.appendChild(row);
+    });
+
+    totalEl.textContent = money(calcTotal(cart));
+    updateCartBadge();
+  }
+
+  document.getElementById("btnClear").addEventListener("click", () => {
+    clearCart(); render();
+  });
+
+  document.getElementById("btnCheckout").addEventListener("click", () => {
+    // Aquí luego conectas a tu endpoint de Orden/Factura cuando lo tengas (POST)
+    alert("Compra lista ✅ (pendiente de conectar al endpoint de órdenes/factura)");
+    clearCart(); render();
+  });
+
+  render();
+</script>
+
+</body>
+</html>

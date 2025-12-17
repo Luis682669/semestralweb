@@ -1,0 +1,63 @@
+<div class="topbar">
+  <div class="container">
+    <ul class="topbar__list">
+      <li>Envío el mismo día</li>
+      <li>Gratis desde $50</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+
+    <a href="index.html">
+      <img src="img/logo.png" class="logo">
+    </a>
+
+    <button class="btn btn--ghost header__categories">Categorías <span class="caret">▼</span></button>
+
+    <div class="dropdown" id="dropdown-categorias">
+      <a href="despensa.html">Despensa</a>
+      <a href="bebidas.html">Bebidas</a>
+      <a href="aseo.html">Aseo</a>
+      <a href="congelados.html">Congelados</a>
+      <a href="farmacia.html">Farmacia</a>
+      <a href="hogar.html">Hogar</a>
+      <a href="comida.html">Comidas</a>
+      <a href="tecnologia.html">Tecnología</a>
+    </div>
+
+    <form class="header__search">
+      <input type="search" id="buscador" placeholder="Buscar productos...">
+      <button>🔍</button>
+    </form>
+
+    <nav class="header__actions">
+      <a href="micuenta.html" id="btnLogin" class="link">Mi cuenta</a>
+      <a href="carrito.html" class="header__cart">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- Account modal (hidden by default) -->
+<div id="accountModal" class="account-modal" aria-hidden="true">
+  <div class="account-modal__backdrop" data-close></div>
+  <div class="account-modal__panel">
+    <button class="account-modal__close" data-close>✖</button>
+    <div id="accountContent">
+      <h3>Iniciar sesión</h3>
+      <form id="accountLoginForm">
+        <input type="email" id="accountEmail" placeholder="Correo" required>
+        <input type="password" id="accountPass" placeholder="Contraseña" required>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn--primary" type="submit">Ingresar</button>
+          <a href="login.html" class="btn btn--ghost">Ir a página de login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
